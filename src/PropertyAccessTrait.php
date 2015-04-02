@@ -19,7 +19,7 @@ trait PropertyAccessTrait
         if (!property_exists($this, $name)) {
             throw new OutOfBoundsException("Property {$name} does not exist");
         }
-        return $this->_getValue($name);
+        return $this->getValue($name);
     }
 
     /**
@@ -29,7 +29,7 @@ trait PropertyAccessTrait
      *
      * @return mixed
      */
-    private function _getValue($name)
+    private function getValue($name)
     {
         $getter = $this->getGetterMethod($name);
         if (method_exists($this, $getter)) {
@@ -50,7 +50,7 @@ trait PropertyAccessTrait
         if (!property_exists($this, $name)) {
             throw new OutOfBoundsException("Property {$name} does not exist");
         }
-        $this->_setValue($name, $value);
+        $this->setValue($name, $value);
     }
 
     /**
@@ -59,7 +59,7 @@ trait PropertyAccessTrait
      * @param string $name
      * @param mixed $value
      */
-    private function _setValue($name, $value)
+    private function setValue($name, $value)
     {
         $setter = $this->getSetterMethod($name);
         if (method_exists($this, $setter)) {
@@ -78,7 +78,7 @@ trait PropertyAccessTrait
     {
         foreach ($values as $name => $value) {
             if (property_exists($this, $name)) {
-                $this->_setValue($name, $value);
+                $this->setValue($name, $value);
             }
         }
     }
