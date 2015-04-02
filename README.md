@@ -15,9 +15,59 @@ class ExampleClass
 {
     use PropertyAccessTrait;
 
-    protected $name;
+    private $name;
 
-    protected $email;
+    private $email;
 
 }
+```
+
+```php
+
+$example = new ExampleClass();
+
+$example->name = 'Bob';
+$example->email = 'bob@example.com';
+
+echo $example->name; // Bob
+
+$example->fill(array(
+    'name' => 'Steve',
+    'email' => 'steve@example.com'
+));
+
+echo $example->email; // steve@example.com
+```
+
+## Getters and Setters will be called
+
+### You can even use Value Objects
+
+```php
+use use Spekkionu\PropertyAccess\PropertyAccessTrait;
+
+class ExampleClass
+{
+    use PropertyAccessTrait;
+
+    private $name;
+
+    private $email;
+
+    public function setEmail(EmailAddress $email){
+        $this->email = $email;
+    }
+
+}
+
+// Value Object
+class EmailAddress
+{
+    private $email;
+}
+
+// Usage
+$example = new ExampleClass();
+$example->email = new EmailAddress('bob#example.com');
+
 ```
