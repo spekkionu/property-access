@@ -64,10 +64,28 @@ class ExampleClass
 class EmailAddress
 {
     private $email;
+
+    public function __construct($email)
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException('Not a valid email address.');
+        }
+        $this->email = $email;
+    }
+
+    public function getValue()
+    {
+        return $this->email;
+    }
+
+    public function __toString()
+    {
+        return $this->getValue();
+    }
 }
 
 // Usage
 $example = new ExampleClass();
-$example->email = new EmailAddress('bob#example.com');
+$example->email = new EmailAddress('bob@example.com');
 
 ```
