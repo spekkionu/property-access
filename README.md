@@ -44,7 +44,7 @@ echo $example->email; // steve@example.com
 ### You can even use Value Objects
 
 ```php
-use use Spekkionu\PropertyAccess\PropertyAccessTrait;
+use Spekkionu\PropertyAccess\PropertyAccessTrait;
 
 class ExampleClass
 {
