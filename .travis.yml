@@ -6,4 +6,8 @@ php:
   - 7.1
   - 7.2
 
-script: phpunit --configuration phpunit.travis.xml --coverage-text
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev
+
+script: ./vendor/bin/phpunit --configuration phpunit.travis.xml --coverage-text
