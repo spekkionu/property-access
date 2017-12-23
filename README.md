@@ -9,7 +9,7 @@ Trait that automatically calls getters and setters for property access.
 
 
 ```php
-use use Spekkionu\PropertyAccess\PropertyAccessTrait;
+use Spekkionu\PropertyAccess\PropertyAccessTrait;
 
 class ExampleClass
 {
